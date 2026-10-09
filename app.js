@@ -26,9 +26,16 @@
                 </script>`
             )
         })
-
-        console.log(ln);
-
     });
+
+    app.get('/view', (req, res) => {
+        const getData = 'SELECT * FROM tbl_students';
+        conn.query(getData, (err, students) => {
+            if (err) throw err;
+            res.render('view', {
+                student: data
+            })
+        })
+    })
 
     app.listen(8000);
