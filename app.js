@@ -15,7 +15,7 @@
         const age = req.body.age;
         const add = req.body.add;
 
-        const insert = `INSERT INTO tbl_students VALUES('0','${ln}','${fn}','${age}','${add}')`
+        const insert = `INSERT INTO tbl_students VALUES('0','${ln}','${fn}','${age}',)`
 
         conn.query(insert, (err) => {
             if (err) throw err;
@@ -35,6 +35,16 @@
             res.render('view', {
                 student: data
             })
+        });
+    });
+
+    app.get('/delete/:id', (req, res) => {
+        const del_id = req.params.id;
+        const toDelete = `Delete FROM tbl_students WHERE  idnum = '${del_id}'`;
+
+        conn.query(toDelete, (err) => {
+            if (err) throw err;
+            res.send(`<script>alert('Data Deleted!')location.href='' </script>`)
         })
     })
 
