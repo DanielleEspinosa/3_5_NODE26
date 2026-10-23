@@ -44,7 +44,10 @@
 
         conn.query(toDelete, (err) => {
             if (err) throw err;
-            res.send(`<script>alert('Data Deleted!')location.href='' </script>`)
+            res.send(`<script>
+                alert('Data Deleted!')
+                location.href= '/view'
+                </script>`)
         })
     })
 
